@@ -1,0 +1,22 @@
+#!/bin/sh
+
+
+
+# sudo apt-get install lm-sensors
+#free -h | awk '/^Mem:/ {print $3 "/" $2}'
+#sensors | awk '/^CPU:/ {print $2}'
+#axch -o cmd:15,%mem --sort=-%mem | head 
+#to do get wifi status 
+#nmcli device status | grep connected | grep 'eno1\|wlp3s0'
+
+net=""
+
+while true
+do
+	net=$(nmcli device status | grep connected | grep 'eno1\|wlp3s0')
+	if [ ! -z "$net" -a "$net" != " " ]; then
+	        net="      |"
+	fi
+	xsetroot -name "   $(sensors | awk '/^CPU:/ {print $2}')  |     $(free -h | awk '/^Mem:/ {print $3 "/" $2}')  |  $net    $(amixer sget Master | awk '/^  Mono:/ {print $4}')  |    $(date "+%a %m-%d %H:%M")"
+	sleep 1m
+done

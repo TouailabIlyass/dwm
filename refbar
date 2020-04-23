@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+#PID=$(ps -xf | pgrep -f dwmstatus.sh | awk '{ print $1 }')
+PID=$(pstree -lp | grep -- -dwmstatus | sed "s/.*sleep(\([0-9]\+\)).*/\1/")
+
+if [ ! -z "$PID" ]
+then 
+	kill $PID
+fi
+
