@@ -1,0 +1,10 @@
+make clean install 
+   83  sudo apt install build-essential 
+   84  sudo apt install libx11-dev 
+   85  make clean install 
+   86  sudo apt install libxft-dev 
+   87  make clean install 
+   88  sudo apt install libxinerama-dev -y
+   89  make clean install 
+   90  sudo make clean install 
+
