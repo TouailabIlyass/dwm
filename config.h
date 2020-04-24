@@ -39,11 +39,13 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	/* { "Gimp",     NULL,       NULL,       0,            1,           -1 }, */
-	{ "Firefox",  NULL,       NULL,       1,       0,           -1 },
-	{ "Chromuim-browser",  NULL,       NULL,       1 << 8 ,       0,           -1 },
-	{ "vlc",  NULL,       NULL,       1 << 5,      0 ,           -1 },
-	{ "URxvt",  NULL,       NULL,       1 << 1,      0 ,           -1 },
-	{ "Gnome-terminal",  NULL,       NULL,       1 << 1,      0 ,           -1 },
+	{ "Firefox",           NULL,       NULL,       1      ,      0 ,   1 },
+	{ "Chromuim-browser",  NULL,       NULL,       1 << 8 ,      0 ,   1 },
+	{ "vlc",               NULL,       NULL,       1 << 5 ,      0 ,   1 },
+	{ "URxvt",             NULL,       NULL,       1 << 1 ,      0 ,   1 },
+	{ "Gnome-terminal",    NULL,       NULL,       1 << 1 ,      0 ,   1 },
+	{ "TelegramDesktop",   NULL,       NULL,       1 << 7 ,      1 ,   1 },
+	{ "Nemo",              NULL,       NULL,       1 << 3 ,      1 ,   1 },
 };
 
 /* layout(s) */
@@ -90,6 +92,8 @@ static const char *firefoxcmd[]  = { "firefox", NULL };
 static const char *gnometermcmd[]  = { "gnome-terminal", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *nemocmd[] = { "nemo", "-g", "750x650",NULL };
+
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
@@ -113,7 +117,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
 	//{ MODKEY,			XK_minus,	spawn,		SHCMD("amixer sset Master 5%- ; pkill -RTMIN+10 dwmblocks") },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("amixer sset Master 5%- ; refbar ") },
-	{ MODKEY|Mod1Mask,		XK_minus,	spawn,		SHCMD("amixer sset Master 95%- ; refbar") },
+	{ MODKEY|Mod1Mask,		XK_minus,	spawn,		SHCMD("amixer sset Master 100%- ; refbar") },
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("amixer sset Master 5%+ ; refbar") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("amixer sset Master 15%+ ; refbar") },
 	/* { MODKEY,			XK_BackSpace,	spawn,		SHCMD("") }, */
@@ -125,9 +129,9 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	/* { MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_e,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("tutorialvids") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e $FILE") },
+	//{ MODKEY,			XK_e,		spawn,		SHCMD("urxvt -e neomutt ; pkill -RTMIN+12 dwmblocks") },
+	//{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("tutorialvids") },
+	//{ MODKEY,			XK_r,		spawn,		SHCMD("st -e $FILE") },
 	/* { MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,		XK_t,		spawn,		SHCMD("") }, */
@@ -148,11 +152,11 @@ static Key keys[] = {
 	{ MODKEY,			XK_backslash,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
-	{ MODKEY,			XK_a,		spawn,		SHCMD("st -e alsamixer ; pkill -RTMIN+10 dwmblocks") },
+	//{ MODKEY,			XK_a,		spawn,		SHCMD("urxvt -e alsamixer ; pkill -RTMIN+10 dwmblocks") },
 	/* { MODKEY|ShiftMask,		XK_a,		spawn,		SHCMD("") }, */
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
+	{ Mod1Mask,			XK_d,		spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_F12,		spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,		XK_d,		togglegaps,	{0} },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
@@ -182,10 +186,10 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_v,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
 	{ MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("hover left") },
-	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") },
+	//{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") },
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("hover right") },
-	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
-	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("amixer sset Master toggle ; pkill -RTMIN+10 dwmblocks") },
+	//{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
+	//{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("amixer sset Master toggle ; pkill -RTMIN+10 dwmblocks") },
 	{ MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
 	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },
 	{ MODKEY,			XK_period,	spawn,		SHCMD("mpc next") },
@@ -238,7 +242,7 @@ static Key keys[] = {
 	{ 0,	XF86XK_Calculator,	spawn,		SHCMD("st -e bc -l") },
 	{ 0,	XF86XK_Sleep,		spawn,		SHCMD("prompt \"Hibernate computer?\" \"sudo -A zzz -Z\"") },
 	{ 0,	XF86XK_WWW,		spawn,		SHCMD("$BROWSER") },
-	{ 0,	XF86XK_DOS,		spawn,		SHCMD("st") },
+	{ 0,	XF86XK_DOS,		spawn,		SHCMD("urxvt") },
 	{ 0,	XF86XK_ScreenSaver,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
 	{ 0,	XF86XK_TaskPane,	spawn,		SHCMD("st -e htop") },
 	{ 0,	XF86XK_Mail,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
@@ -275,6 +279,7 @@ static Key keys[] = {
 
 	////////my custom conf
 	   {Mod1Mask,			XK_f,		spawn,		{.v = firefoxcmd}},
+	   {Mod1Mask,			XK_n,		spawn,		{.v = nemocmd}},
 	   {Mod1Mask,			XK_Return,		spawn,		{.v = gnometermcmd}},
 
 };
