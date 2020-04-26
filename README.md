@@ -1,21 +1,28 @@
-# Luke's build of dwm
+#My First customisation of dwm
 
-Here's my build of dwm.
+#Based on https://dwm.suckless.org/
 
-## FAQ
 
-> What are the bindings?
 
-This is suckless, mmmbud, the source code is the documentation! Check out `config.h`.
+> Tutorial?
 
-## Patches and features
+https://dwm.suckless.org/tutorial/
 
-- reads xresources colors
-- scratchpad accessible with mod+shift+enter
-- fibbonacci/centered master/etc. other layouts
-- true fullscreen and prevents focus shifting
-- windows can be made sticky
-- stacker patch
-- shiftview to cycle tags
-- gaps around windows and bar
-- dwmc
+
+#Prerequisites
+
+	- Urxvt
+	- dmenu
+	- st
+	- nemo
+	- FontAwesome
+	- zsh
+	- ranger
+	- zathura
+
+#Screenshot
+
+![Alt text](./wallpaper/s1.png?raw=true "")
+![Alt text](./wallpaper/s2.png?raw=true "")
+![Alt text](./wallpaper/s3.png?raw=true "")
+![Alt text](./wallpaper/s4.png?raw=true "")
