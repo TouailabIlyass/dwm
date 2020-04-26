@@ -9,14 +9,35 @@
 #to do get wifi status 
 #nmcli device status | grep connected | grep 'eno1\|wlp3s0'
 
-net=""
+print_Bat()
+{
+	#BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
+	BAT0=$(acpi | awk '{ print $4 }')
+	if [ "$BAT0" \> "5%" ]; then
+			BAT0=" "$BAT0
+	elif [ "$BAT0" \> "20%" ]; then
+		BAT0=" "$BAT0
+	elif [ "$BAT0" \> "65%" ]; then
+			BAT0=" "$BAT0
+	elif [ "$BAT0" \> "90%" ]; then
+			BAT0=" "$BAT0
+	elif [ "$BAT0" \< "90%" ]; then
+		BAT0=" "$BAT0
+	fi
+	echo "$BAT0"
+}
+
+print_Network()
+{
+	net=$(nmcli device status | grep connected | grep 'eno1\|wlp3s0')
+	if [ ! -z "$net" -a "$net" != " " ]; then
+	        net=" "
+	fi
+	echo "$net"
+}
 
 while true
 do
-	net=$(nmcli device status | grep connected | grep 'eno1\|wlp3s0')
-	if [ ! -z "$net" -a "$net" != " " ]; then
-	        net="      |"
-	fi
-	xsetroot -name "   $(sensors | awk '/^CPU:/ {print $2}')  |     $(free -h | awk '/^Mem:/ {print $3 "/" $2}')  |  $net    $(amixer sget Master | awk '/^  Mono:/ {print $4}')  |    $(date "+%a %m-%d %H:%M")"
+	xsetroot -name " $(sensors | awk '/^CPU:/ {print $2}')  |     $(free -h | awk '/^Mem:/ {print $3 "/" $2}')|  $(print_Network) |  $(print_Bat) |    $(amixer sget Master | awk '/^  Mono:/ {print $4}')  |    $(date "+%a %m-%d %H:%M")"
 	sleep 1m
 done
