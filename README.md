@@ -1,4 +1,4 @@
-#My First customisation of dwm
+# My First customisation of dwm
 
 #Based on https://dwm.suckless.org/
 
@@ -9,7 +9,7 @@
 https://dwm.suckless.org/tutorial/
 
 
-#Dependencies
+# Dependencies
 
 	- Urxvt
 	- dmenu
@@ -20,8 +20,9 @@ https://dwm.suckless.org/tutorial/
 	- ranger
 	- zathura
 
-#Screenshot
-#My dwm build
+# Screenshot
+
+# My dwm build
 
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s1.png)
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s2.png)
