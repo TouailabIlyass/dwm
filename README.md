@@ -9,7 +9,7 @@
 https://dwm.suckless.org/tutorial/
 
 
-#Prerequisites
+#Dependencies
 
 	- Urxvt
 	- dmenu
@@ -21,6 +21,7 @@ https://dwm.suckless.org/tutorial/
 	- zathura
 
 #Screenshot
+#My dwm build
 
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s1.png)
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s2.png)
