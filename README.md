@@ -20,9 +20,7 @@ https://dwm.suckless.org/tutorial/
 	- ranger
 	- zathura
 
-# Screenshot
-
-# My dwm build
+# Screenshot of my dwm build
 
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s1.png)
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s2.png)
