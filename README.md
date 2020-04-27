@@ -22,7 +22,7 @@ https://dwm.suckless.org/tutorial/
 
 #Screenshot
 
-![Alt text](./wallpaper/s1.png?raw=true "")
-![Alt text](./wallpaper/s2.png?raw=true "")
-![Alt text](./wallpaper/s3.png?raw=true "")
-![Alt text](./wallpaper/s4.png?raw=true "")
+![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s1.png)
+![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s2.png)
+![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s3.png)
+![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s4.png)
