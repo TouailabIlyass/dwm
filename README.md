@@ -19,8 +19,9 @@ https://dwm.suckless.org/tutorial/
 	- zsh
 	- ranger
 	- zathura
+	- w3m-img
 
-# Screenshot of my dwm build
+# Screenshots of my dwm build
 
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s1.png)
 ![](https://github.com/TouailabIlyass/dwm/blob/master/wallpapers/s2.png)
